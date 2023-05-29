@@ -11,14 +11,14 @@ class ContactForm extends React.Component{
 
 handleChange = event => {
     const { name, value } = event.currentTarget;
+    // console.log(name, value)
     this.setState({ [name]: value });
+    // console.log('name:',this.state.name,'number:', this.state.number)
 };
 
 handleSubmit = event => {
 event.preventDefault();
-
-// console.log(this.state.name)
-this.props.onSubmit({ id: nanoid(), name:this.state.name, number: this.state.number });
+    this.props.onSubmit({ id: nanoid(), name: this.state.name, number: this.state.number });
 this.reset();
 };
 
@@ -27,6 +27,7 @@ reset = () => {
 }
     
 render() {
+    console.log(this.state)
     return (
         <form onSubmit={this.handleSubmit} className={css.form}>
             <label>Name
@@ -41,7 +42,7 @@ render() {
                 />
             </label>
             
-            <label htmlFor="">Number
+            <label>Number
                 <input
                     type="tel"
                     name="number"

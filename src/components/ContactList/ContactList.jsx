@@ -1,9 +1,10 @@
 import React from "react";
-import ContactItem from "components/ContactItem/ContactItem";
+import PropTypes from 'prop-types';
+// import ContactItem from "components/ContactItem/ContactItem";
 
 import css from './contactList.module.css'
 
-function ShowContacts( {contacts, deleteContact }) {
+function ContactList ( {contacts, deleteContact }) {
     if (contacts) {
         return (
             <>
@@ -11,9 +12,10 @@ function ShowContacts( {contacts, deleteContact }) {
                 <ul>
                     {contacts.map(({ id, name, number }) => {                    
                         return (
-                        <li key={id} className={css.li}>
-                            <ContactItem key={id} name={name} number={number} />
-                            <button className={css.delete} onClick={() => deleteContact(id)}>Delete contact</button>
+                            <li key={id} className={css.li}>
+                                <span>{name}: {number}</span>
+                            {/* <ContactItem name={name} number={number} /> */}
+                            <button className={css.delete} type='button' onClick={() => deleteContact(id)}>Delete contact</button>
                         </li>
                         )
                     })}
@@ -23,4 +25,15 @@ function ShowContacts( {contacts, deleteContact }) {
     }
 }
 
-export default ShowContacts;
+export default ContactList;
+
+ContactList.propTypes = {
+    contacts: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,
+        })
+    ),
+    deleteContact: PropTypes.func.isRequired,
+}
