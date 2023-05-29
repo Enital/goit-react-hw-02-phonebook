@@ -20,6 +20,14 @@ class App extends React.Component {
   };
 
   formSubmit = ({ id, name, number }) => {
+    const names = this.state.contacts.map(contact => contact.name);
+    
+    const lowerCaseName = name.toLowerCase();console.log(lowerCaseName)
+    const lowerCaseNames = names.map(name => name.toLowerCase());
+    if (lowerCaseNames.includes(lowerCaseName)) {
+      alert(`${name} is already in Contacts!`);
+      return;
+    }
     this.setState(prevState => {
       return {
         contacts: [{ id, name, number }, ...prevState.contacts],
