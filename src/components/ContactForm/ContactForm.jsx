@@ -1,9 +1,9 @@
 import React from "react";
 import { nanoid } from "nanoid";
 
-import css from './form.module.css'
+import css from './contactForm.module.css'
 
-class Form extends React.Component{
+class ContactForm extends React.Component{
     state = {
         name: '',
         number: '',
@@ -28,7 +28,7 @@ reset = () => {
     
 render() {
     return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className={css.form}>
             <label>Name
                 <input
                     type="text"
@@ -58,4 +58,4 @@ render() {
 }
 }
 
-export default Form;
+export default ContactForm;

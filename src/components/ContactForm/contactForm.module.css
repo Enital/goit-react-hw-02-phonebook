@@ -1,0 +1,13 @@
+.button{
+    background-color: lightgreen;
+}
+.form{
+    padding: 20px;
+    border: 2px solid rgb(36, 88, 82);
+    border-radius: 12px;
+    background-color: rgb(204, 235, 226);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}

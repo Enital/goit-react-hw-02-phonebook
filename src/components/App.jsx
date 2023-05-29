@@ -1,6 +1,7 @@
 import React from "react";
-import Form from "./Form/Form";
-import ShowContacts from "./ShowContacts/ShowContacts";
+import ContactForm from "./ContactForm/ContactForm";
+import ShowContacts from "./ContactList/ContactList";
+import Filter from "./Filter/Filter";
 
 import css from './app.module.css'
 
@@ -36,9 +37,10 @@ class App extends React.Component {
       <div className={css.container}>
         <section>
           <h2 className={css.title}>Phonebook</h2>
-          <Form className={css.form} onSubmit={this.formSubmit} />
+          <ContactForm className={css.form} onSubmit={this.formSubmit} />
         </section>
         <section>
+          <Filter />
           <ShowContacts contacts={this.state.contacts} deleteContact={this.deleteContact} />
         </section>
       </div>
