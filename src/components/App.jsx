@@ -16,9 +16,7 @@ class App extends React.Component {
   }
   handleChange = event => {
     const { name, value } = event.currentTarget;
-    // console.log(name, value)
     this.setState({ [name]: value });
-    // console.log('name:',this.state.name,'number:', this.state.number)
   };
 
   formSubmit = ({ id, name, number }) => {
@@ -33,9 +31,10 @@ class App extends React.Component {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
+    this.setState({filter: ''})
   };
 
-  filter = () => {
+  filterContacts = () => {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -45,22 +44,16 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(this.state.contacts);
-    // const { contacts, filter } = this.state;
-    // const filteredContacts = contacts.filter(contact =>
-    //   contact.name.toLowerCase().includes(filter.toLowerCase())
-    // );
 
     return (
       <div className={css.container}>
-        <section>
+        <section className={css.section}>
           <h2 className={css.title}>Phonebook</h2>
           <ContactForm className={css.form} onSubmit={this.formSubmit} />
         </section>
-        <section>
+        <section className={css.section}>
           <Filter filter={this.state.filter} handleChange={this.handleChange}/>
-          <ContactList contacts={this.filter()} deleteContact={this.deleteContact} />
-          {/* <ContactList contacts={filteredContacts} deleteContact={this.deleteContact} /> */}
+          <ContactList contacts={this.filterContacts()} deleteContact={this.deleteContact} />
         </section>
       </div>
     )

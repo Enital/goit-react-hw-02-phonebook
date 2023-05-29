@@ -11,9 +11,7 @@ class ContactForm extends React.Component{
 
 handleChange = event => {
     const { name, value } = event.currentTarget;
-    // console.log(name, value)
     this.setState({ [name]: value });
-    // console.log('name:',this.state.name,'number:', this.state.number)
 };
 
 handleSubmit = event => {
@@ -23,14 +21,14 @@ this.reset();
 };
 
 reset = () => {
-    this.setState({ name: '', number: '' });
+    this.setState({ name: '', number: ''});
 }
     
 render() {
-    console.log(this.state)
+    
     return (
         <form onSubmit={this.handleSubmit} className={css.form}>
-            <label>Name
+            <label className={css.label}>Name</label>
                 <input
                     type="text"
                     name="name"
@@ -39,10 +37,10 @@ render() {
                     required
                     onChange={this.handleChange}
                     value={this.state.name}
+                    className={css.input}
                 />
-            </label>
             
-            <label>Number
+            <label className={css.label}>Number</label>
                 <input
                     type="tel"
                     name="number"
@@ -51,8 +49,9 @@ render() {
                     required
                     onChange={this.handleChange}
                     value={this.state.number}
-                />
-            </label>        
+                    className={css.input}
+            />
+            
             <button type="submit" className={css.button}>Add contact</button>
         </form>
     )
