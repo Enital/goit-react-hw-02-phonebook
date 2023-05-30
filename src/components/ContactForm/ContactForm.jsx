@@ -15,9 +15,9 @@ handleChange = event => {
 };
 
 handleSubmit = event => {
-event.preventDefault();
+    event.preventDefault();
     this.props.onSubmit({ id: nanoid(), name: this.state.name, number: this.state.number });
-this.reset();
+    this.reset();
 };
 
 reset = () => {
